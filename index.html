@@ -3,148 +3,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>홍길동 | 풀스택 개발자 포트폴리오</title>
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- Icon -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>강의시간표</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="logo">HG.</div>
-        <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
+    <div class="container">
+        <!-- 헤더 -->
+        <header class="header">
+            <h1 class="title">୨୧‿‿‿୨ ♡ ୧‿‿‿୨୧<br>민송이의 시간표</h1>
+            <p class="subtitle">내가 이 수업을 이해하면 박사지 고졸이겠나</p>
+        </header>
 
-    <header class="hero">
-        <div class="hero-content hidden">
-            <h1 class="gradient-text">홍길동</h1>
-            <h2>Full Stack Developer</h2>
-            <p>문제를 해결하고 가치를 만드는 개발자입니다.</p>
-            <a href="#projects" class="btn">프로젝트 보기</a>
+        <!-- 메인 레이아웃 -->
+        <div class="main-layout">
+            <!-- 사이드바 -->
+            <aside class="sidebar">
+                <h2>강의 추가하기</h2>
+                
+                <form id="classForm">
+                    <div class="form-group">
+                        <label for="className">강의명</label>
+                        <input type="text" id="className" placeholder="예: 자료구조" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="classRoom">강의실</label>
+                        <input type="text" id="classRoom" placeholder="예: 018-301호">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="classCredit">학점</label>
+                        <input type="number" id="classCredit" placeholder="예: 3" min="1" max="5" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="classDay">요일</label>
+                        <select id="classDay" required>
+                            <option value="">선택하세요</option>
+                            <option value="0">월요일</option>
+                            <option value="1">화요일</option>
+                            <option value="2">수요일</option>
+                            <option value="3">목요일</option>
+                            <option value="4">금요일</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>시간</label>
+                        <div class="time-inputs">
+                            <div>
+                                <label for="startTime" style="font-size: 12px; color: #666; margin-bottom: 4px;">시작</label>
+                                <select id="startTime" required>
+                                    <option value="">선택하세요</option>
+                                    <option value="09:00">09:00 (1교시)</option>
+                                    <option value="10:00">10:00 (2교시)</option>
+                                    <option value="11:00">11:00 (3교시)</option>
+                                    <option value="12:00">12:00 (4교시)</option>
+                                    <option value="13:00">13:00 (5교시)</option>
+                                    <option value="14:00">14:00 (6교시)</option>
+                                    <option value="15:00">15:00 (7교시)</option>
+                                    <option value="16:00">16:00 (8교시)</option>
+                                    <option value="17:00">17:00 (9교시)</option>
+                                    <option value="18:00">18:00 (10교시)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="endTime" style="font-size: 12px; color: #666; margin-bottom: 4px;">종료</label>
+                                <select id="endTime" required>
+                                    <option value="">선택하세요</option>
+                                    <option value="10:00">10:00 (2교시)</option>
+                                    <option value="11:00">11:00 (3교시)</option>
+                                    <option value="12:00">12:00 (4교시)</option>
+                                    <option value="13:00">13:00 (5교시)</option>
+                                    <option value="14:00">14:00 (6교시)</option>
+                                    <option value="15:00">15:00 (7교시)</option>
+                                    <option value="16:00">16:00 (8교시)</option>
+                                    <option value="17:00">17:00 (9교시)</option>
+                                    <option value="18:00">18:00 (10교시)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="add-btn">강의 추가</button>
+                </form>
+
+                <!-- 강의 목록 -->
+                <div class="class-list">
+                    <h3>추가된 강의</h3>
+                    <div id="classList"></div>
+                </div>
+            </aside>
+
+            <!-- 시간표 -->
+            <main class="timetable-wrapper">
+                <div class="timetable" id="timetable">
+                    <!-- JavaScript로 동적 생성 -->
+                </div>
+            </main>
         </div>
-    </header>
 
-    <section id="about" class="section">
-        <div class="container hidden">
-            <h2 class="section-title">About Me</h2>
-            <p class="about-text">
-                안녕하세요! 웹 기술을 통해 사용자에게 즐거운 경험을 전달하는 풀스택 개발자 홍길동입니다.
-                새로운 기술을 배우는 것을 좋아하며, 직관적이고 효율적인 코드 작성을 지향합니다.
-                사용자의 문제를 기술적으로 해결할 때 가장 큰 즐거움을 느낍니다.
-            </p>
-        </div>
-    </section>
-
-    <section id="projects" class="section alt-bg">
-        <div class="container">
-            <h2 class="section-title hidden">Projects</h2>
-            <div class="projects-grid">
-                <!-- Project 1 -->
-                <div class="project-card hidden delay-100">
-                    <div class="project-info">
-                        <h3>E-Commerce Platform</h3>
-                        <p>사용자 친화적인 쇼핑몰 플랫폼입니다. 실시간 재고 관리와 안전한 결제 시스템을 구현했습니다.</p>
-                        <div class="tags">
-                            <span>React</span>
-                            <span>Node.js</span>
-                            <span>MongoDB</span>
-                        </div>
-                        <a href="#" class="icon-link"><i class="fab fa-github"></i> GitHub</a>
-                    </div>
-                </div>
-                <!-- Project 2 -->
-                <div class="project-card hidden delay-200">
-                    <div class="project-info">
-                        <h3>Task Master</h3>
-                        <p>팀 협업을 위한 일정 관리 도구입니다. 드래그 앤 드롭 기능과 실시간 알림을 제공합니다.</p>
-                        <div class="tags">
-                            <span>Vue.js</span>
-                            <span>Firebase</span>
-                            <span>Tailwind</span>
-                        </div>
-                        <a href="#" class="icon-link"><i class="fab fa-github"></i> GitHub</a>
-                    </div>
-                </div>
-                <!-- Project 3 -->
-                <div class="project-card hidden delay-300">
-                    <div class="project-info">
-                        <h3>AI Chatbot Service</h3>
-                        <p>자연어 처리를 이용한 고객 상담 챗봇입니다. 24시간 자동 응답 시스템을 구축했습니다.</p>
-                        <div class="tags">
-                            <span>Python</span>
-                            <span>Django</span>
-                            <span>OpenAI API</span>
-                        </div>
-                        <a href="#" class="icon-link"><i class="fab fa-github"></i> GitHub</a>
-                    </div>
-                </div>
+        <!-- 요약 정보 -->
+        <div class="summary">
+            <div class="summary-item">
+                <span class="summary-label">총 학점</span>
+                <span class="summary-value" id="totalCredits">0학점</span>
+            </div>
+            <div class="summary-item">
+                <span class="summary-label">수강 과목</span>
+                <span class="summary-value" id="totalClasses">0과목</span>
+            </div>
+            <div class="summary-item">
+                <span class="summary-label">이번 주 수업</span>
+                <span class="summary-value" id="weeklyHours">0시간</span>
             </div>
         </div>
-    </section>
-
-    <section id="skills" class="section">
-        <div class="container">
-            <h2 class="section-title hidden">Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-item hidden delay-100">
-                    <i class="fab fa-react"></i>
-                    <span>React</span>
-                </div>
-                <div class="skill-item hidden delay-200">
-                    <i class="fab fa-node-js"></i>
-                    <span>Node.js</span>
-                </div>
-                <div class="skill-item hidden delay-300">
-                    <i class="fab fa-python"></i>
-                    <span>Python</span>
-                </div>
-                <div class="skill-item hidden delay-400">
-                    <i class="fab fa-aws"></i>
-                    <span>AWS</span>
-                </div>
-                <div class="skill-item hidden delay-500">
-                    <i class="fab fa-js"></i>
-                    <span>JavaScript</span>
-                </div>
-                <div class="skill-item hidden delay-600">
-                    <i class="fab fa-docker"></i>
-                    <span>Docker</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="section alt-bg">
-        <div class="container hidden">
-            <h2 class="section-title">Contact</h2>
-            <div class="contact-links">
-                <a href="mailto:hong@example.com" class="contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <span>Email</span>
-                </a>
-                <a href="#" class="contact-item">
-                    <i class="fab fa-github"></i>
-                    <span>GitHub</span>
-                </a>
-                <a href="#" class="contact-item">
-                    <i class="fab fa-linkedin"></i>
-                    <span>LinkedIn</span>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <p>&copy; 2024 Hong Gil-dong. All rights reserved.</p>
-    </footer>
+    </div>
 
     <script src="script.js"></script>
 </body>
